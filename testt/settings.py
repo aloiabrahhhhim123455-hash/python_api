@@ -20,12 +20,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-=gn8lor@@s735q5)%d&#l@6#fjg_v*u9y#tol+8%)d^9bej+!h'
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'django-insecure-=gn8lor@@s735q5)%d&#l@6#fjg_v*u9y#tol+8%)d^9bej+!h')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DJANGO_DEBUG', 'False') == 'True'
 
-ALLOWED_HOSTS = []
+# Replace with your PythonAnywhere domain, or set the env var DJANGO_ALLOWED_HOSTS
+ALLOWED_HOSTS = os.environ.get('DJANGO_ALLOWED_HOSTS', 'yourusername.pythonanywhere.com').split(',')
+
+# When using HTTPS on PythonAnywhere, add your domain here
+CSRF_TRUSTED_ORIGINS = os.environ.get('DJANGO_CSRF_TRUSTED_ORIGINS', 'https://yourusername.pythonanywhere.com').split(',')
 
 
 # Application definition
@@ -116,4 +120,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+# Media files (optional)
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
