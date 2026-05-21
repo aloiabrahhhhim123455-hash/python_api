@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f6f9;
+        }
+
+        /* NAVBAR */
+        nav {
+            background: linear-gradient(90deg, #1f2937, #111827);
+            padding: 15px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+        }
+
+        .nav-left a {
+            color: white;
+            text-decoration: none;
+            margin-right: 15px;
+            font-weight: bold;
+        }
+
+        .nav-left a:hover {
+            color: #38bdf8;
+        }
+
+        .nav-right {
+            font-size: 14px;
+        }
+
+        .btn {
+            padding: 6px 12px;
+            border-radius: 6px;
+            text-decoration: none;
+            margin-left: 10px;
+            font-size: 14px;
+        }
+
+        .login {
+            background: #3b82f6;
+            color: white;
+        }
+
+        .register {
+            background: #10b981;
+            color: white;
+        }
+
+        .logout {
+            background: #ef4444;
+            color: white;
+        }
+
+        /* CARD */
+        .container {
+            display: flex;
+            justify-content: center;
+            margin-top: 60px;
+        }
+
+        .card {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            text-align: center;
+            width: 400px;
+        }
+
+        .card h1 {
+            margin-bottom: 10px;
+            color: #111827;
+        }
+
+        .card p {
+            color: #6b7280;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav>
+
+    <div class="nav-left">
+        <a href="{% url 'index' %}">Home</a>
+        <a href="{% url 'product_page' %}">Products</a>
+        <a href="{% url 'display' %}">catogry</a>
+      
+    </div>
+
+    <div class="nav-right">
+
+        {% if user.is_authenticated %}
+
+            <span>👋 Welcome, <b>{{ user.username }}</b></span>
+
+            <a class="btn logout" href="{% url 'logout' %}">Logout</a>
+
+        {% else %}
+
+            <a class="btn login" href="{% url 'login' %}">Login</a>
+            <a class="btn register" href="{% url 'register' %}">Register</a>
+
+        {% endif %}
+
+    </div>
+
+</nav>
+
+<!-- CONTENT -->
+<div class="container">
+    <div class="card">
+        <h1>🏠 Home Page</h1>
+        <p>Welcome to your Django project dashboard</p>
+    </div>
+</div>
+
+</body>
+</html>

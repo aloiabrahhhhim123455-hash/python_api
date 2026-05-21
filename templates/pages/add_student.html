@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form  method="post">
+        {% csrf_token %}
+        <input type="text"name='nu' placeholder="id">
+        <br>
+        <input type="text"name='name' placeholder="name">
+        <br>
+        <input type="text"name='phon' placeholder="phon">
+        <br>
+        <input type="text"name='adress' placeholder="adress">
+        <br>
+        <input type="submit" value="save">
+    </form>
+</body>
+</html>

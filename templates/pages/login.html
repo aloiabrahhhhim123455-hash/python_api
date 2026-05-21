@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <title>تسجيل الدخول</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: "Arial", sans-serif;
+        }
+
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #939496, #9f9ea0);
+        }
+
+        .login-box {
+            width: 350px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 35px;
+            border-radius: 18px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+
+        h2 {
+            margin-bottom: 25px;
+            color: #333;
+        }
+
+        input {
+            width: 100%;
+            padding: 13px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 10px;
+            background: #f3f3f3;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        input:focus {
+            background: #fff;
+            box-shadow: 0 0 8px rgba(102,126,234,0.4);
+        }
+
+        button {
+            width: 100%;
+            padding: 13px;
+            margin-top: 10px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border: none;
+            color: white;
+            border-radius: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            transform: scale(1.03);
+        }
+
+        a {
+            display: block;
+            margin-top: 15px;
+            color: #808185;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* رسالة الخطأ بشكل أنيق */
+        .alert {
+            background: #ff4d4d;
+            color: white;
+            padding: 10px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            font-size: 14px;
+            animation: shake 0.3s ease-in-out;
+        }
+
+        @keyframes shake {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            50% { transform: translateX(5px); }
+            75% { transform: translateX(-5px); }
+            100% { transform: translateX(0); }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="login-box">
+
+    <h2>مرحباً بك </h2>
+
+    {% if error %}
+        <div class="alert">
+            {{ error }}
+        </div>
+    {% endif %}
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <input type="text" name="username" placeholder="اسم المستخدم" required>
+
+        <input type="password" name="password" placeholder="كلمة المرور" required>
+
+        <button type="submit">تسجيل الدخول</button>
+    </form>
+
+    <a href="{% url 'register' %}">ليس لديك حساب؟ إنشاء حساب</a>
+
+</div>
+
+</body>
+</html>

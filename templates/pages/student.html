@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <div>
+        {% for i in student %}
+        <h1>{{i.nu}}</h1>
+        <h1>{{i.name}}</h1>
+        <h1>{{i.number}}</h1>
+        <h1>{{i.adress}}</h1>
+        {%endfor%}
+    </div> -->
+    <table border="1">
+    <tr>
+        <th>NU</th>
+        <th>Name</th>
+        <th>Number</th>
+        <th>Address</th>
+    </tr>
+
+    {% for i in student %}
+    <tr>
+        <td>{{ i.nu }}</td>
+        <td>{{ i.name }}</td>
+        <td>{{ i.number }}</td>
+        <td>{{ i.adress }}</td>
+    </tr>
+    {% endfor %}
+</table>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Products</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            color: white;
+        }
+
+        h2 {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 30px;
+        }
+
+        /* CONTAINER (عمودي) */
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            padding: 30px;
+        }
+
+        /* CARD */
+        .card {
+            width: 60%;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 15px;
+            padding: 20px;
+
+            box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: scale(1.02);
+        }
+
+        /* ROW (كل سطر داخل الكارد) */
+        .row {
+            display: flex;
+            align-items: center;
+            margin: 10px 0;
+        }
+
+        .label {
+            width: 150px;
+            font-weight: bold;
+            color: #38bdf8;
+        }
+
+        .value {
+            flex: 1;
+            color: #e5e7eb;
+        }
+
+        .price {
+            color: #22c55e;
+            font-weight: bold;
+        }
+
+        /* EMPTY */
+        .empty {
+            text-align: center;
+            margin-top: 50px;
+            color: #f87171;
+        }
+    </style>
+</head>
+
+<body>
+
+<h2>📦 قائمة المنتجات</h2>
+
+<div class="container">
+
+    {% for item in display %}
+
+        <div class="card">
+
+            <div class="row">
+                <div class="label">اسم المنتج:</div>
+                <div class="value">{{ item.name }}</div>
+            </div>
+
+            <div class="row">
+                <div class="label">المواصفات:</div>
+                <div class="value">{{ item.description }}</div>
+            </div>
+
+            <div class="row">
+                <div class="label">السعر:</div>
+                <div class="value price">{{ item.price }} 💰</div>
+            </div>
+
+        </div>
+
+    {% empty %}
+
+        <div class="empty">لا يوجد منتجات حالياً</div>
+
+    {% endfor %}
+
+</div>
+
+</body>
+</html>
